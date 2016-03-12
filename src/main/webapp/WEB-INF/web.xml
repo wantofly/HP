@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+<filter>
+		<display-name>Stripes Filter</display-name>
+		<filter-name>StripesFilter</filter-name>
+		<filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
+		<init-param>
+			<param-name>ActionBeanContext.Class</param-name>
+		    <param-value>com.kiwi.stripes.MyActionBeanContext</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ExceptionHandler.Class</param-name>
+		    <param-value>com.kiwi.stripes.MyExceptionHandler</param-value>
+		</init-param>
+		<init-param>
+			<param-name>LocalizationBundleFactory.FieldNameBundle</param-name>
+		    <param-value>StripesResources</param-value>
+		</init-param>
+		<init-param>
+		    <param-name>LocalizationBundleFactory.ErrorMessageBundle</param-name>
+		    <param-value>StripesResources</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ActionResolver.Packages</param-name>
+			<param-value>com.kiwi.stripes.actions</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Interceptor.Classes</param-name>
+			<param-value>
+				com.kiwi.stripes.SecurityInterceptor
+				<!-- 
+				com.kiwi.stripes.NoisyInterceptor
+				,net.sourceforge.stripes.controller.BeforeAfterMethodInterceptor
+				 -->
+			</param-value>
+		</init-param>
+     	<init-param>
+			<param-name>LocalePicker.Locales</param-name>
+			<param-value>en_US:UTF-8,zh_CN:UTF-8,ja:UTF-8</param-value>
+		</init-param>
+ 	</filter>
+	
+	<filter-mapping>
+		<filter-name>StripesFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>StripesFilter</filter-name>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<url-pattern>*.action</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<url-pattern>/act/*</url-pattern>
+		<url-pattern>/err/*</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
+	<servlet>
+		<servlet-name>helloJSP</servlet-name>
+		<jsp-file>/HelloAce.jsp</jsp-file>
+		<init-param>
+			<param-name>appName</param-name>
+			<param-value>ace.demo</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet>
+		<servlet-name>HelloAce</servlet-name>
+		<servlet-class>ace.demo.HelloAce</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CacheServiceDemo</servlet-name>
+		<servlet-class>ace.demo.service.CacheServiceDemo</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>StoreServiceDemo</servlet-name>
+		<servlet-class>ace.demo.service.StoreServiceDemo</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>MailServiceDemo</servlet-name>
+		<servlet-class>ace.demo.service.MailServiceDemo</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LogServiceDemo</servlet-name>
+		<servlet-class>ace.demo.service.LogServiceDemo</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>helloJSP</servlet-name>
+		<url-pattern>/HelloAce.jsp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>HelloAce</servlet-name>
+		<url-pattern>/HelloAce.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CacheServiceDemo</servlet-name>
+		<url-pattern>/CacheServiceDemo.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StoreServiceDemo</servlet-name>
+		<url-pattern>/StoreServiceDemo.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MailServiceDemo</servlet-name>
+		<url-pattern>/MailServiceDemo.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogServiceDemo</servlet-name>
+		<url-pattern>/LogServiceDemo.do</url-pattern>
+	</servlet-mapping>
+</web-app>
