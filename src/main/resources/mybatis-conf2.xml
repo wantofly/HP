@@ -34,9 +34,14 @@
 				<property name="username" value="hpadmin"/>
 				<property name="password" value="BrownFoxJump0301"/>
 				 -->
+                <!--
 				<property name="url" value="jdbc:mysql://localhost:5421/hpdb?useUnicode=true&amp;characterEncoding=UTF-8" />
 				<property name="username" value="root"/>
 				<property name="password" value="root"/>
+				-->
+				<property name="url" value="jdbc:mysql://localhost:3306/hpdb?useUnicode=true&amp;characterEncoding=UTF-8" />
+				<property name="username" value="hpadmin"/>
+				<property name="password" value="Hpadmin0301"/>
 				
 				<property name="poolPingQuery" value="SELECT 1" /> 
                 <property name="poolPingEnabled" value="true" /> 
